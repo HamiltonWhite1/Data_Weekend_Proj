@@ -81,13 +81,13 @@ df.dropna(inplace=True)
 
 # ### Which production companies released the most movies in the last 10 years? Display the top 5 production companies.
 
-# In[7]:
+# In[13]:
 
 
 top_five_prod = df.copy()
 top_five_prod.drop(['budget', 'revenue', 'director', 'genres', 'release_date', 'budget_adj', 'revenue_adj', 'release_year'], axis=1, inplace=True)
 top_five_counts = top_five_prod.groupby('production_companies').count()
-top_five_answer = top_five_counts.sort_values(by=['original_title'], ascending=False).head(5)
+top_five_answer = top_five_counts.sort_values(by=['original_title'], ascending=False).head(10)
 graph_result = top_five_answer.plot(kind='barh', title='Top 5 Production Companies By Original Titles', ylabel='Number of Original Titles', xlabel='Companies', color=['black'])
 graph_result.grid()
 
@@ -118,7 +118,7 @@ top_five_gross.plot(kind='bar',title='Top 5 Earning Directors', ylabel="Gross by
 
 # ### Compare the revenue of the highest grossing movies of all time.
 
-# In[20]:
+# In[10]:
 
 
 # I really like pie charts
@@ -135,4 +135,4 @@ finalized.plot(kind='pie', subplots=True, figsize=(25,20));
 # 
 # > Using the cell below, write a brief conclusion of what you have found from the anaylsis of the data. The Cell below will allow you to write plan text instead of code.
 
-# 
+# After cleaning and organizing the IMDB data, I was able to find the highest grossing directors of all time, the highest grossing films of all time, which genre of film has the highest gross earnings, and which production companies produced those films. The highest grossing production companies and the highest grossing films have a strong correlation present in the findings. While some films, such as James Cameron's Avatar show a monumental box office revenue of $2.8 billion without the resources of a top-5 production company (20th Century Fox is the 9th highest gross), each of the other films in the top 10 listing directly benefited from one of the top-5 production companies.
